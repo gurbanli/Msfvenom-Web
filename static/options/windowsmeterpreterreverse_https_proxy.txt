@@ -1,0 +1,6 @@
+EXITFUNC
+HttpProxyHost
+HttpProxyPass
+HttpProxyPort
+HttpProxyType
+HttpProxyUser

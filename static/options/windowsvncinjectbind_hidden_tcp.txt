@@ -1,0 +1,6 @@
+AHOST
+AUTOVNC
+DisableCourtesyShell
+EXITFUNC
+LPORT
+RHOST

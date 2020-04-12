@@ -1,0 +1,6 @@
+AUTOVNC
+DisableCourtesyShell
+EXITFUNC
+VNCHOST
+VNCPORT
+ViewOnly
