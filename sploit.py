@@ -1,3 +1,6 @@
+import json
+
+
 def get_payloads():
     file = open('static/files/payloads.txt', 'r')
     return [payload.strip('\n') for payload in file.readlines()]
@@ -13,11 +16,11 @@ def get_formats():
     return [payload_format.strip('\n') for payload_format in file.readlines()]
 
 
-def set_cmd(payload, encoder, variable_name, payload_format, bad_chars, arch):
-    cmd = f"msfvenom -p {payload} -e {encoder} -v {variable_name} -f {payload_format} " \
-          f"-b {bad_chars} -a {arch}"
-    """
-    
-    NOT IMPLEMENTED YET
-    
-    """
+def get_options(payload_name):
+    payload_name = payload_name + '.txt'
+    file = open('static/options/'+payload_name, 'r')
+    options = {
+        'options': [option.strip('\n') for option in file.readlines()]
+    }
+    return json.dumps(options)
+

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect
 from forms import GenerateForm
 from secrets import token_urlsafe
-from sploit import set_cmd
+from sploit import get_options
 
 
 app = Flask(__name__)
@@ -19,18 +19,20 @@ def hello_world():
             payload_format = form.payload_formats.data
             bad_chars = form.bad_chars.data
             arch = form.arch.data
-            set_cmd(payload, encoder, variable_name, payload_format, bad_chars, arch)
-            return redirect('/')
+        option_names = dict()
+        for key in request.form:
+            if key.startswith('options'):
+                option_names[key.partition('.')[2]] = request.form[key]
+        return redirect('/')
     return render_template('index.html', form=form)
 
 
-@app.after_request
-def add_header(req):
-    req.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    req.headers["Pragma"] = "no-cache"
-    req.headers["Expires"] = "0"
-    req.headers['Cache-Control'] = 'public, max-age=0'
-    return req
+@app.route('/get/<payload>', methods=['POST'])
+def get_payload(payload):
+    return get_options(payload)
+
+
+
 
 
 if __name__ == '__main__':
