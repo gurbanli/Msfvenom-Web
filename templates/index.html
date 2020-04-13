@@ -34,16 +34,8 @@
             {{ form.bad_chars.label }}
             {{ form.bad_chars(class_="form-control") }}
         </div>
-        <div class="form-check form-check-inline">
-            {% for arch in form.arch %}
-                <tr>
-                    <td>{{ arch(class_="form-check-input ml-2") }}</td>
-                    <td>{{ arch.label(class_="form-check-label") }}</td>
-                </tr>
-            {% endfor %}
-        </div>
 
-        <button type="submit" class="btn btn-primary">Generate</button>
+        <button type="submit" class="btn btn-primary float-right">Generate</button>
     </form>
 </div>
 <script src="{{ url_for('static', filename='js/msf.js') }}"></script>

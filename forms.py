@@ -10,5 +10,5 @@ class GenerateForm(FlaskForm):
     variable_name = StringField('Variable Name', validators=[DataRequired()])
     payload_formats = SelectField('Payload Formats', choices=[(payload_format_choice, payload_format_choice) for payload_format_choice in get_formats()], validators=[DataRequired()])
     bad_chars = TextAreaField('Bad Characters', validators=[DataRequired()])
-    arch = RadioField('Arch', choices=[('x86', 'x86'), ('x86_64', 'x86_64')], validators=[DataRequired()])
     generate = SubmitField('Generate')
+
