@@ -1,4 +1,4 @@
-file=/home/gurbanli/PycharmProjects/MsfvenomWeb/static/files/payloads.txt
+file=../files/payloads.txt
 
 for payload in $(cat $file);
 do 
