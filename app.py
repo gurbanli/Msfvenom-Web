@@ -20,9 +20,11 @@ def hello_world():
             option_names = dict()
             for key in request.form:
                 if key.startswith('options'):
-                    option_names[key.partition('.')[2]] = request.form[key]
+                    if key.partition('_')[2].isalnum():
+                        option_names[key.partition('_')[2]] = request.form[key]
+                    else:
+                        return redirect('/')
             results = generate_payload(payload, option_names, encoder, variable_name, payload_format, bad_chars)
-            print(results)
             generator = (cell for row in results
                          for cell in row)
             return Response(generator,

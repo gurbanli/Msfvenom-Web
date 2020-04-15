@@ -31,7 +31,11 @@ def generate_payload(payload, options, encoder, variable_name, payload_format, b
         option_parameters = ''
         for key, value in options.items():
             option_parameters += key + '=' + value + ' '
-        cmd = f"msfvenom -p {payload} {option_parameters} -e {encoder} -v {variable_name} " \
+        if encoder == 'No Encoder':
+            cmd = f"msfvenom -p {payload} {option_parameters} -v {variable_name} " \
+                  f"-f {payload_format}"
+        else:
+            cmd = f"msfvenom -p {payload} {option_parameters} -e {encoder} -v {variable_name} " \
               f"-f {payload_format} -b '{bad_chars}'"
         stream = os.popen(cmd)
         result = stream.read()

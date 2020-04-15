@@ -22,8 +22,8 @@ function makeOptionTags(text) {
     }
     for (let i = 0; i < options.length; i++) {
         let newHtml = '';
-        newHtml += `<label for="options.${options[i]}">${options[i]}</label>\n`;
-        newHtml += `<input class="form-control" name="options.${options[i]}" required type="text">`;
+        newHtml += `<label for="options_${options[i]}">${options[i]}</label>\n`;
+        newHtml += `<input class="form-control" name="options_${options[i]}" required type="text">`;
         let element = document.getElementById('payload-div');
         let newDiv = document.createElement('div');
         newDiv.className = "form-group options";
